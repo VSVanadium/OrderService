@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "Service";
+
+package Order;
+
+// The greeting service definition.
+service Order {
+  // Sends a greeting
+  rpc Checkout (BillingRequest) returns (BillingReply);
+}
+
+// The request message containing the user's name.
+message BillingRequest {
+  string name = 1;
+  string product = 2;
+  string quantity = 3;
+}
+
+// The response message containing the greetings.
+message BillingReply {
+  string message = 1;
+  string total = 2;
+}
