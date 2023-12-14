@@ -7,13 +7,14 @@ package Order;
 // The greeting service definition.
 service Order {
   // Sends a greeting
+  rpc GetProducts(ProductRequest) returns(ProductListResponse);
   rpc Checkout (BillingRequest) returns (BillingReply);
 }
 
 // The request message containing the user's name.
 message BillingRequest {
   string name = 1;
-  string product = 2;
+  string productId = 2;
   string quantity = 3;
 }
 
@@ -21,4 +22,26 @@ message BillingRequest {
 message BillingReply {
   string message = 1;
   string total = 2;
+}
+
+message Product {
+  // Unique identifier for the product
+  int32 id = 1;
+  
+  // Name of the product
+  string name = 2;
+  
+  // Price of the product
+  float price = 3;
+}
+
+message ProductRequest {
+  // Any specific parameters for the request can be added here
+}
+
+
+message ProductListResponse {
+	 // List of products returned in the response
+  repeated Product productList = 2;
+
 }
